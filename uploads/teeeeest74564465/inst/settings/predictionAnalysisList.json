@@ -1,0 +1,1687 @@
+{
+  "getPlpDataArgs": {
+    "maxSampleSize": null,
+    "washoutPeriod": 0
+  },
+  "skeletonType": "PatientLevelPredictionStudy",
+  "populationSettings": [{
+    "minTimeAtRisk": 364,
+    "requireTimeAtRisk": true,
+    "addExposureDaysToStart": false,
+    "riskWindowStart": 1,
+    "washoutPeriod": 365,
+    "attr_class": "populationSettings",
+    "addExposureDaysToEnd": false,
+    "includeAllOutcomes": true,
+    "priorOutcomeLookback": 99999,
+    "binary": true,
+    "removeSubjectsWithPriorOutcome": false,
+    "riskWindowEnd": 30,
+    "firstExposureOnly": false
+  }],
+  "organizationName": "OHDSI",
+  "targetIds": [125],
+  "runPlpArgs": {
+    "nfold": 3,
+    "minCovariateFraction": 0.001,
+    "splitSeed": null,
+    "testSplit": "person",
+    "testFraction": 0.25,
+    "normalizeData": true
+  },
+  "version": "v2.7.0",
+  "outcomeIds": [
+    123,
+    124
+  ],
+  "skeletonVersion": "v0.0.1",
+  "conceptSetCrossReference": [],
+  "cohortDefinitions": [
+    {
+      "expression": {
+        "ExpressionLimit": {"Type": "All"},
+        "CollapseSettings": {
+          "CollapseType": "ERA",
+          "EraPad": 0
+        },
+        "CensorWindow": {
+          "StartDate": null,
+          "EndDate": null
+        },
+        "ConceptSets": [{
+          "expression": {"items": [
+            {
+              "isExcluded": false,
+              "concept": {
+                "INVALID_REASON_CAPTION": "Unknown",
+                "CONCEPT_ID": 2000010043,
+                "STANDARD_CONCEPT": "",
+                "CONCEPT_CODE": "blo_sgpt_ti",
+                "VOCABULARY_ID": "vt-code_labs",
+                "CONCEPT_NAME": "ALT in Blood",
+                "DOMAIN_ID": "Measurement",
+                "STANDARD_CONCEPT_CAPTION": "Unknown",
+                "CONCEPT_CLASS_ID": "vt-labs",
+                "INVALID_REASON": ""
+              },
+              "includeMapped": false,
+              "includeDescendants": false
+            },
+            {
+              "isExcluded": false,
+              "concept": {
+                "INVALID_REASON_CAPTION": "Unknown",
+                "CONCEPT_ID": 4095055,
+                "STANDARD_CONCEPT": "S",
+                "CONCEPT_CODE": "250637003",
+                "VOCABULARY_ID": "SNOMED",
+                "CONCEPT_NAME": "ALT - blood measurement",
+                "DOMAIN_ID": "Measurement",
+                "STANDARD_CONCEPT_CAPTION": "Standard",
+                "CONCEPT_CLASS_ID": "Procedure",
+                "INVALID_REASON": ""
+              },
+              "includeMapped": false,
+              "includeDescendants": false
+            },
+            {
+              "isExcluded": false,
+              "concept": {
+                "INVALID_REASON_CAPTION": "Valid",
+                "CONCEPT_ID": 3006923,
+                "STANDARD_CONCEPT": "S",
+                "CONCEPT_CODE": "1742-6",
+                "VOCABULARY_ID": "LOINC",
+                "CONCEPT_NAME": "Alanine aminotransferase [Enzymatic activity/volume] in Serum or Plasma",
+                "DOMAIN_ID": "Measurement",
+                "STANDARD_CONCEPT_CAPTION": "Standard",
+                "CONCEPT_CLASS_ID": "Lab Test",
+                "INVALID_REASON": "V"
+              },
+              "includeMapped": false,
+              "includeDescendants": false
+            }
+          ]},
+          "name": "Vanco_ALT 0216",
+          "id": 6
+        }],
+        "EndStrategy": {"DateOffset": {
+          "DateField": "EndDate",
+          "Offset": 0
+        }},
+        "cdmVersionRange": ">=5.0.0",
+        "CensoringCriteria": [],
+        "QualifiedLimit": {"Type": "First"},
+        "InclusionRules": [{
+          "expression": {
+            "CriteriaList": [{
+              "RestrictVisit": false,
+              "StartWindow": {
+                "UseEventEnd": false,
+                "Start": {
+                  "Days": null,
+                  "Coeff": -1
+                },
+                "End": {
+                  "Days": null,
+                  "Coeff": 1
+                },
+                "UseIndexEnd": false
+              },
+              "IgnoreObservationPeriod": false,
+              "EndWindow": null,
+              "Criteria": {"Measurement": {
+                "Operator": null,
+                "RangeHigh": null,
+                "MeasurementTypeExclude": false,
+                "ValueAsConcept": null,
+                "CorrelatedCriteria": null,
+                "RangeHighRatio": null,
+                "CodesetId": 6,
+                "ProviderSpecialty": null,
+                "Gender": null,
+                "Unit": null,
+                "RangeLowRatio": null,
+                "MeasurementType": null,
+                "MeasurementSourceConcept": null,
+                "VisitType": null,
+                "ValueAsNumber": {
+                  "Op": "gt",
+                  "Extent": null,
+                  "Value": 120
+                },
+                "First": null,
+                "OccurrenceStartDate": null,
+                "RangeLow": null,
+                "Abnormal": null,
+                "Age": null
+              }},
+              "Occurrence": {
+                "Type": 2,
+                "CountColumn": null,
+                "IsDistinct": false,
+                "Count": 1
+              }
+            }],
+            "Type": "ALL",
+            "DemographicCriteriaList": [],
+            "Groups": [],
+            "Count": null
+          },
+          "name": "hepatotoxicity",
+          "description": null
+        }],
+        "PrimaryCriteria": {
+          "CriteriaList": [{"Measurement": {
+            "Operator": null,
+            "RangeHigh": null,
+            "MeasurementTypeExclude": false,
+            "ValueAsConcept": null,
+            "CorrelatedCriteria": null,
+            "RangeHighRatio": null,
+            "CodesetId": 6,
+            "ProviderSpecialty": null,
+            "Gender": null,
+            "Unit": null,
+            "RangeLowRatio": null,
+            "MeasurementType": null,
+            "MeasurementSourceConcept": null,
+            "VisitType": null,
+            "ValueAsNumber": null,
+            "First": null,
+            "OccurrenceStartDate": null,
+            "RangeLow": null,
+            "Abnormal": null,
+            "Age": null
+          }}],
+          "PrimaryCriteriaLimit": {"Type": "All"},
+          "ObservationWindow": {
+            "PostDays": 0,
+            "PriorDays": 0
+          }
+        }
+      },
+      "createdDate": null,
+      "createdBy": null,
+      "name": "Vanco_o_ALT_0209",
+      "modifiedDate": null,
+      "description": null,
+      "expressionType": "SIMPLE_EXPRESSION",
+      "modifiedBy": null,
+      "id": 123
+    },
+    {
+      "expression": {
+        "ExpressionLimit": {"Type": "All"},
+        "CollapseSettings": {
+          "CollapseType": "ERA",
+          "EraPad": 0
+        },
+        "CensorWindow": {
+          "StartDate": null,
+          "EndDate": null
+        },
+        "ConceptSets": [
+          {
+            "expression": {"items": [
+              {
+                "isExcluded": false,
+                "concept": {
+                  "INVALID_REASON_CAPTION": "Unknown",
+                  "CONCEPT_ID": 2025858,
+                  "STANDARD_CONCEPT": "S",
+                  "CONCEPT_CODE": "OMOP4924453",
+                  "VOCABULARY_ID": "RxNorm Extension",
+                  "CONCEPT_NAME": "100 ML sodium chloride 9 MG/ML / vancomycin 10 MG/ML Injectable Solution [VANCO KIT] by UK Chemipharm",
+                  "DOMAIN_ID": "Drug",
+                  "STANDARD_CONCEPT_CAPTION": "Standard",
+                  "CONCEPT_CLASS_ID": "Marketed Product",
+                  "INVALID_REASON": ""
+                },
+                "includeMapped": false,
+                "includeDescendants": false
+              },
+              {
+                "isExcluded": false,
+                "concept": {
+                  "INVALID_REASON_CAPTION": "Unknown",
+                  "CONCEPT_ID": 2052966,
+                  "STANDARD_CONCEPT": "S",
+                  "CONCEPT_CODE": "OMOP4953488",
+                  "VOCABULARY_ID": "RxNorm Extension",
+                  "CONCEPT_NAME": "vancomycin 1000 MG Injection by CJ",
+                  "DOMAIN_ID": "Drug",
+                  "STANDARD_CONCEPT_CAPTION": "Standard",
+                  "CONCEPT_CLASS_ID": "Marketed Product",
+                  "INVALID_REASON": ""
+                },
+                "includeMapped": false,
+                "includeDescendants": false
+              },
+              {
+                "isExcluded": false,
+                "concept": {
+                  "INVALID_REASON_CAPTION": "Unknown",
+                  "CONCEPT_ID": 2052964,
+                  "STANDARD_CONCEPT": "S",
+                  "CONCEPT_CODE": "OMOP4953486",
+                  "VOCABULARY_ID": "RxNorm Extension",
+                  "CONCEPT_NAME": "vancomycin 1000 MG Injection [HANOMYCIN] by Samjin",
+                  "DOMAIN_ID": "Drug",
+                  "STANDARD_CONCEPT_CAPTION": "Standard",
+                  "CONCEPT_CLASS_ID": "Marketed Product",
+                  "INVALID_REASON": ""
+                },
+                "includeMapped": false,
+                "includeDescendants": false
+              },
+              {
+                "isExcluded": false,
+                "concept": {
+                  "INVALID_REASON_CAPTION": "Unknown",
+                  "CONCEPT_ID": 2011856,
+                  "STANDARD_CONCEPT": "S",
+                  "CONCEPT_CODE": "OMOP4953495",
+                  "VOCABULARY_ID": "RxNorm Extension",
+                  "CONCEPT_NAME": "vancomycin 1000 MG Injection [VANCOCIN-CP] by Menarini",
+                  "DOMAIN_ID": "Drug",
+                  "STANDARD_CONCEPT_CAPTION": "Standard",
+                  "CONCEPT_CLASS_ID": "Marketed Product",
+                  "INVALID_REASON": ""
+                },
+                "includeMapped": false,
+                "includeDescendants": false
+              },
+              {
+                "isExcluded": false,
+                "concept": {
+                  "INVALID_REASON_CAPTION": "Unknown",
+                  "CONCEPT_ID": 42971929,
+                  "STANDARD_CONCEPT": "S",
+                  "CONCEPT_CODE": "OMOP4698342",
+                  "VOCABULARY_ID": "RxNorm Extension",
+                  "CONCEPT_NAME": "Vancomycin 1000 MG Injection [VANCOMYCIN HCI CJ]",
+                  "DOMAIN_ID": "Drug",
+                  "STANDARD_CONCEPT_CAPTION": "Standard",
+                  "CONCEPT_CLASS_ID": "Branded Drug",
+                  "INVALID_REASON": ""
+                },
+                "includeMapped": false,
+                "includeDescendants": false
+              },
+              {
+                "isExcluded": false,
+                "concept": {
+                  "INVALID_REASON_CAPTION": "Unknown",
+                  "CONCEPT_ID": 42971895,
+                  "STANDARD_CONCEPT": "S",
+                  "CONCEPT_CODE": "OMOP4698308",
+                  "VOCABULARY_ID": "RxNorm Extension",
+                  "CONCEPT_NAME": "Vancomycin 250 MG Injection [HANOMYCIN]",
+                  "DOMAIN_ID": "Drug",
+                  "STANDARD_CONCEPT_CAPTION": "Standard",
+                  "CONCEPT_CLASS_ID": "Branded Drug",
+                  "INVALID_REASON": ""
+                },
+                "includeMapped": false,
+                "includeDescendants": false
+              },
+              {
+                "isExcluded": false,
+                "concept": {
+                  "INVALID_REASON_CAPTION": "Unknown",
+                  "CONCEPT_ID": 2052985,
+                  "STANDARD_CONCEPT": "S",
+                  "CONCEPT_CODE": "OMOP4953516",
+                  "VOCABULARY_ID": "RxNorm Extension",
+                  "CONCEPT_NAME": "vancomycin 250 MG Injection [HANOMYCIN] by Samjin",
+                  "DOMAIN_ID": "Drug",
+                  "STANDARD_CONCEPT_CAPTION": "Standard",
+                  "CONCEPT_CLASS_ID": "Marketed Product",
+                  "INVALID_REASON": ""
+                },
+                "includeMapped": false,
+                "includeDescendants": false
+              },
+              {
+                "isExcluded": false,
+                "concept": {
+                  "INVALID_REASON_CAPTION": "Unknown",
+                  "CONCEPT_ID": 2052976,
+                  "STANDARD_CONCEPT": "S",
+                  "CONCEPT_CODE": "OMOP4953503",
+                  "VOCABULARY_ID": "RxNorm Extension",
+                  "CONCEPT_NAME": "vancomycin 500 MG Injection by CJ",
+                  "DOMAIN_ID": "Drug",
+                  "STANDARD_CONCEPT_CAPTION": "Standard",
+                  "CONCEPT_CLASS_ID": "Marketed Product",
+                  "INVALID_REASON": ""
+                },
+                "includeMapped": false,
+                "includeDescendants": false
+              },
+              {
+                "isExcluded": false,
+                "concept": {
+                  "INVALID_REASON_CAPTION": "Unknown",
+                  "CONCEPT_ID": 2011860,
+                  "STANDARD_CONCEPT": "S",
+                  "CONCEPT_CODE": "OMOP4953513",
+                  "VOCABULARY_ID": "RxNorm Extension",
+                  "CONCEPT_NAME": "vancomycin 500 MG Injection [VANCOCIN-CP] by Menarini",
+                  "DOMAIN_ID": "Drug",
+                  "STANDARD_CONCEPT_CAPTION": "Standard",
+                  "CONCEPT_CLASS_ID": "Marketed Product",
+                  "INVALID_REASON": ""
+                },
+                "includeMapped": false,
+                "includeDescendants": false
+              },
+              {
+                "isExcluded": false,
+                "concept": {
+                  "INVALID_REASON_CAPTION": "Unknown",
+                  "CONCEPT_ID": 42971908,
+                  "STANDARD_CONCEPT": "S",
+                  "CONCEPT_CODE": "OMOP4698321",
+                  "VOCABULARY_ID": "RxNorm Extension",
+                  "CONCEPT_NAME": "Vancomycin 500 MG Injection [VANCOMYCIN HCI CJ]",
+                  "DOMAIN_ID": "Drug",
+                  "STANDARD_CONCEPT_CAPTION": "Standard",
+                  "CONCEPT_CLASS_ID": "Branded Drug",
+                  "INVALID_REASON": ""
+                },
+                "includeMapped": false,
+                "includeDescendants": false
+              }
+            ]},
+            "name": "VANCO_ivs",
+            "id": 0
+          },
+          {
+            "expression": {"items": [{
+              "isExcluded": false,
+              "concept": {
+                "INVALID_REASON_CAPTION": "Unknown",
+                "CONCEPT_ID": 2000010023,
+                "STANDARD_CONCEPT": "",
+                "CONCEPT_CODE": "blo_wbc_ti",
+                "VOCABULARY_ID": "vt-code_labs",
+                "CONCEPT_NAME": "WBC in Blood",
+                "DOMAIN_ID": "Measurement",
+                "STANDARD_CONCEPT_CAPTION": "Unknown",
+                "CONCEPT_CLASS_ID": "vt-labs",
+                "INVALID_REASON": ""
+              },
+              "includeMapped": false,
+              "includeDescendants": false
+            }]},
+            "name": "Vanco_WBC",
+            "id": 1
+          },
+          {
+            "expression": {"items": [{
+              "isExcluded": false,
+              "concept": {
+                "INVALID_REASON_CAPTION": "Unknown",
+                "CONCEPT_ID": 2000010004,
+                "STANDARD_CONCEPT": "",
+                "CONCEPT_CODE": "blo_eos_ti",
+                "VOCABULARY_ID": "vt-code_labs",
+                "CONCEPT_NAME": "Eosinophil # in Blood",
+                "DOMAIN_ID": "Measurement",
+                "STANDARD_CONCEPT_CAPTION": "Unknown",
+                "CONCEPT_CLASS_ID": "vt-labs",
+                "INVALID_REASON": ""
+              },
+              "includeMapped": false,
+              "includeDescendants": false
+            }]},
+            "name": "Vanco_Eosinophil",
+            "id": 2
+          },
+          {
+            "expression": {"items": [{
+              "isExcluded": false,
+              "concept": {
+                "INVALID_REASON_CAPTION": "Unknown",
+                "CONCEPT_ID": 2000010018,
+                "STANDARD_CONCEPT": "",
+                "CONCEPT_CODE": "blo_pla_ti",
+                "VOCABULARY_ID": "vt-code_labs",
+                "CONCEPT_NAME": "Platelet in Blood",
+                "DOMAIN_ID": "Measurement",
+                "STANDARD_CONCEPT_CAPTION": "Unknown",
+                "CONCEPT_CLASS_ID": "vt-labs",
+                "INVALID_REASON": ""
+              },
+              "includeMapped": false,
+              "includeDescendants": false
+            }]},
+            "name": "Vanco_PLT",
+            "id": 3
+          },
+          {
+            "expression": {"items": [{
+              "isExcluded": false,
+              "concept": {
+                "INVALID_REASON_CAPTION": "Unknown",
+                "CONCEPT_ID": 2000010039,
+                "STANDARD_CONCEPT": "",
+                "CONCEPT_CODE": "blo_cr_ti",
+                "VOCABULARY_ID": "vt-code_labs",
+                "CONCEPT_NAME": "Creatinine in Blood",
+                "DOMAIN_ID": "Measurement",
+                "STANDARD_CONCEPT_CAPTION": "Unknown",
+                "CONCEPT_CLASS_ID": "vt-labs",
+                "INVALID_REASON": ""
+              },
+              "includeMapped": false,
+              "includeDescendants": false
+            }]},
+            "name": "Vanco_Creatinine",
+            "id": 4
+          },
+          {
+            "expression": {"items": [{
+              "isExcluded": false,
+              "concept": {
+                "INVALID_REASON_CAPTION": "Unknown",
+                "CONCEPT_ID": 2000010043,
+                "STANDARD_CONCEPT": "",
+                "CONCEPT_CODE": "blo_sgpt_ti",
+                "VOCABULARY_ID": "vt-code_labs",
+                "CONCEPT_NAME": "ALT in Blood",
+                "DOMAIN_ID": "Measurement",
+                "STANDARD_CONCEPT_CAPTION": "Unknown",
+                "CONCEPT_CLASS_ID": "vt-labs",
+                "INVALID_REASON": ""
+              },
+              "includeMapped": false,
+              "includeDescendants": false
+            }]},
+            "name": "Vanco_ALT",
+            "id": 5
+          },
+          {
+            "expression": {"items": [
+              {
+                "isExcluded": false,
+                "concept": {
+                  "INVALID_REASON_CAPTION": "Unknown",
+                  "CONCEPT_ID": 2000010039,
+                  "STANDARD_CONCEPT": "",
+                  "CONCEPT_CODE": "blo_cr_ti",
+                  "VOCABULARY_ID": "vt-code_labs",
+                  "CONCEPT_NAME": "Creatinine in Blood",
+                  "DOMAIN_ID": "Measurement",
+                  "STANDARD_CONCEPT_CAPTION": "Unknown",
+                  "CONCEPT_CLASS_ID": "vt-labs",
+                  "INVALID_REASON": ""
+                },
+                "includeMapped": false,
+                "includeDescendants": false
+              },
+              {
+                "isExcluded": false,
+                "concept": {
+                  "INVALID_REASON_CAPTION": "Unknown",
+                  "CONCEPT_ID": 3051825,
+                  "STANDARD_CONCEPT": "S",
+                  "CONCEPT_CODE": "38483-4",
+                  "VOCABULARY_ID": "LOINC",
+                  "CONCEPT_NAME": "Creatinine [Mass/volume] in Blood",
+                  "DOMAIN_ID": "Measurement",
+                  "STANDARD_CONCEPT_CAPTION": "Standard",
+                  "CONCEPT_CLASS_ID": "Lab Test",
+                  "INVALID_REASON": ""
+                },
+                "includeMapped": false,
+                "includeDescendants": false
+              },
+              {
+                "isExcluded": false,
+                "concept": {
+                  "INVALID_REASON_CAPTION": "Unknown",
+                  "CONCEPT_ID": 4324383,
+                  "STANDARD_CONCEPT": "S",
+                  "CONCEPT_CODE": "70901006",
+                  "VOCABULARY_ID": "SNOMED",
+                  "CONCEPT_NAME": "Creatinine measurement",
+                  "DOMAIN_ID": "Measurement",
+                  "STANDARD_CONCEPT_CAPTION": "Standard",
+                  "CONCEPT_CLASS_ID": "Procedure",
+                  "INVALID_REASON": ""
+                },
+                "includeMapped": false,
+                "includeDescendants": false
+              }
+            ]},
+            "name": "Vanco_Creatinine 0216",
+            "id": 6
+          }
+        ],
+        "EndStrategy": {"DateOffset": {
+          "DateField": "EndDate",
+          "Offset": 0
+        }},
+        "cdmVersionRange": ">=5.0.0",
+        "CensoringCriteria": [],
+        "QualifiedLimit": {"Type": "First"},
+        "InclusionRules": [{
+          "expression": {
+            "CriteriaList": [{
+              "RestrictVisit": false,
+              "StartWindow": {
+                "UseEventEnd": false,
+                "Start": {
+                  "Days": null,
+                  "Coeff": -1
+                },
+                "End": {
+                  "Days": null,
+                  "Coeff": 1
+                },
+                "UseIndexEnd": false
+              },
+              "IgnoreObservationPeriod": false,
+              "EndWindow": null,
+              "Criteria": {"Measurement": {
+                "Operator": null,
+                "RangeHigh": null,
+                "MeasurementTypeExclude": false,
+                "ValueAsConcept": null,
+                "CorrelatedCriteria": null,
+                "RangeHighRatio": null,
+                "CodesetId": 6,
+                "ProviderSpecialty": null,
+                "Gender": null,
+                "Unit": null,
+                "RangeLowRatio": null,
+                "MeasurementType": null,
+                "MeasurementSourceConcept": null,
+                "VisitType": null,
+                "ValueAsNumber": {
+                  "Op": "gt",
+                  "Extent": null,
+                  "Value": 1.4
+                },
+                "First": null,
+                "OccurrenceStartDate": null,
+                "RangeLow": null,
+                "Abnormal": null,
+                "Age": null
+              }},
+              "Occurrence": {
+                "Type": 2,
+                "CountColumn": null,
+                "IsDistinct": false,
+                "Count": 1
+              }
+            }],
+            "Type": "ALL",
+            "DemographicCriteriaList": [],
+            "Groups": [],
+            "Count": null
+          },
+          "name": "nephrotoxicity",
+          "description": null
+        }],
+        "PrimaryCriteria": {
+          "CriteriaList": [{"Measurement": {
+            "Operator": null,
+            "RangeHigh": null,
+            "MeasurementTypeExclude": false,
+            "ValueAsConcept": null,
+            "CorrelatedCriteria": null,
+            "RangeHighRatio": null,
+            "CodesetId": 6,
+            "ProviderSpecialty": null,
+            "Gender": null,
+            "Unit": null,
+            "RangeLowRatio": null,
+            "MeasurementType": null,
+            "MeasurementSourceConcept": null,
+            "VisitType": null,
+            "ValueAsNumber": null,
+            "First": null,
+            "OccurrenceStartDate": null,
+            "RangeLow": null,
+            "Abnormal": null,
+            "Age": null
+          }}],
+          "PrimaryCriteriaLimit": {"Type": "All"},
+          "ObservationWindow": {
+            "PostDays": 0,
+            "PriorDays": 0
+          }
+        }
+      },
+      "createdDate": null,
+      "createdBy": null,
+      "name": "Vanco_o_Creatinine_0209",
+      "modifiedDate": null,
+      "description": null,
+      "expressionType": "SIMPLE_EXPRESSION",
+      "modifiedBy": null,
+      "id": 124
+    },
+    {
+      "expression": {
+        "ExpressionLimit": {"Type": "First"},
+        "CollapseSettings": {
+          "CollapseType": "ERA",
+          "EraPad": 0
+        },
+        "CensorWindow": {
+          "StartDate": null,
+          "EndDate": null
+        },
+        "ConceptSets": [
+          {
+            "expression": {"items": [
+              {
+                "isExcluded": false,
+                "concept": {
+                  "INVALID_REASON_CAPTION": "Unknown",
+                  "CONCEPT_ID": 2025858,
+                  "STANDARD_CONCEPT": "S",
+                  "CONCEPT_CODE": "OMOP4924453",
+                  "VOCABULARY_ID": "RxNorm Extension",
+                  "CONCEPT_NAME": "100 ML sodium chloride 9 MG/ML / vancomycin 10 MG/ML Injectable Solution [VANCO KIT] by UK Chemipharm",
+                  "DOMAIN_ID": "Drug",
+                  "STANDARD_CONCEPT_CAPTION": "Standard",
+                  "CONCEPT_CLASS_ID": "Marketed Product",
+                  "INVALID_REASON": ""
+                },
+                "includeMapped": false,
+                "includeDescendants": false
+              },
+              {
+                "isExcluded": false,
+                "concept": {
+                  "INVALID_REASON_CAPTION": "Unknown",
+                  "CONCEPT_ID": 2052966,
+                  "STANDARD_CONCEPT": "S",
+                  "CONCEPT_CODE": "OMOP4953488",
+                  "VOCABULARY_ID": "RxNorm Extension",
+                  "CONCEPT_NAME": "vancomycin 1000 MG Injection by CJ",
+                  "DOMAIN_ID": "Drug",
+                  "STANDARD_CONCEPT_CAPTION": "Standard",
+                  "CONCEPT_CLASS_ID": "Marketed Product",
+                  "INVALID_REASON": ""
+                },
+                "includeMapped": false,
+                "includeDescendants": false
+              },
+              {
+                "isExcluded": false,
+                "concept": {
+                  "INVALID_REASON_CAPTION": "Unknown",
+                  "CONCEPT_ID": 2052964,
+                  "STANDARD_CONCEPT": "S",
+                  "CONCEPT_CODE": "OMOP4953486",
+                  "VOCABULARY_ID": "RxNorm Extension",
+                  "CONCEPT_NAME": "vancomycin 1000 MG Injection [HANOMYCIN] by Samjin",
+                  "DOMAIN_ID": "Drug",
+                  "STANDARD_CONCEPT_CAPTION": "Standard",
+                  "CONCEPT_CLASS_ID": "Marketed Product",
+                  "INVALID_REASON": ""
+                },
+                "includeMapped": false,
+                "includeDescendants": false
+              },
+              {
+                "isExcluded": false,
+                "concept": {
+                  "INVALID_REASON_CAPTION": "Unknown",
+                  "CONCEPT_ID": 2011856,
+                  "STANDARD_CONCEPT": "S",
+                  "CONCEPT_CODE": "OMOP4953495",
+                  "VOCABULARY_ID": "RxNorm Extension",
+                  "CONCEPT_NAME": "vancomycin 1000 MG Injection [VANCOCIN-CP] by Menarini",
+                  "DOMAIN_ID": "Drug",
+                  "STANDARD_CONCEPT_CAPTION": "Standard",
+                  "CONCEPT_CLASS_ID": "Marketed Product",
+                  "INVALID_REASON": ""
+                },
+                "includeMapped": false,
+                "includeDescendants": false
+              },
+              {
+                "isExcluded": false,
+                "concept": {
+                  "INVALID_REASON_CAPTION": "Unknown",
+                  "CONCEPT_ID": 42971929,
+                  "STANDARD_CONCEPT": "S",
+                  "CONCEPT_CODE": "OMOP4698342",
+                  "VOCABULARY_ID": "RxNorm Extension",
+                  "CONCEPT_NAME": "Vancomycin 1000 MG Injection [VANCOMYCIN HCI CJ]",
+                  "DOMAIN_ID": "Drug",
+                  "STANDARD_CONCEPT_CAPTION": "Standard",
+                  "CONCEPT_CLASS_ID": "Branded Drug",
+                  "INVALID_REASON": ""
+                },
+                "includeMapped": false,
+                "includeDescendants": false
+              },
+              {
+                "isExcluded": false,
+                "concept": {
+                  "INVALID_REASON_CAPTION": "Unknown",
+                  "CONCEPT_ID": 42971895,
+                  "STANDARD_CONCEPT": "S",
+                  "CONCEPT_CODE": "OMOP4698308",
+                  "VOCABULARY_ID": "RxNorm Extension",
+                  "CONCEPT_NAME": "Vancomycin 250 MG Injection [HANOMYCIN]",
+                  "DOMAIN_ID": "Drug",
+                  "STANDARD_CONCEPT_CAPTION": "Standard",
+                  "CONCEPT_CLASS_ID": "Branded Drug",
+                  "INVALID_REASON": ""
+                },
+                "includeMapped": false,
+                "includeDescendants": false
+              },
+              {
+                "isExcluded": false,
+                "concept": {
+                  "INVALID_REASON_CAPTION": "Unknown",
+                  "CONCEPT_ID": 2052985,
+                  "STANDARD_CONCEPT": "S",
+                  "CONCEPT_CODE": "OMOP4953516",
+                  "VOCABULARY_ID": "RxNorm Extension",
+                  "CONCEPT_NAME": "vancomycin 250 MG Injection [HANOMYCIN] by Samjin",
+                  "DOMAIN_ID": "Drug",
+                  "STANDARD_CONCEPT_CAPTION": "Standard",
+                  "CONCEPT_CLASS_ID": "Marketed Product",
+                  "INVALID_REASON": ""
+                },
+                "includeMapped": false,
+                "includeDescendants": false
+              },
+              {
+                "isExcluded": false,
+                "concept": {
+                  "INVALID_REASON_CAPTION": "Unknown",
+                  "CONCEPT_ID": 2052976,
+                  "STANDARD_CONCEPT": "S",
+                  "CONCEPT_CODE": "OMOP4953503",
+                  "VOCABULARY_ID": "RxNorm Extension",
+                  "CONCEPT_NAME": "vancomycin 500 MG Injection by CJ",
+                  "DOMAIN_ID": "Drug",
+                  "STANDARD_CONCEPT_CAPTION": "Standard",
+                  "CONCEPT_CLASS_ID": "Marketed Product",
+                  "INVALID_REASON": ""
+                },
+                "includeMapped": false,
+                "includeDescendants": false
+              },
+              {
+                "isExcluded": false,
+                "concept": {
+                  "INVALID_REASON_CAPTION": "Unknown",
+                  "CONCEPT_ID": 2011860,
+                  "STANDARD_CONCEPT": "S",
+                  "CONCEPT_CODE": "OMOP4953513",
+                  "VOCABULARY_ID": "RxNorm Extension",
+                  "CONCEPT_NAME": "vancomycin 500 MG Injection [VANCOCIN-CP] by Menarini",
+                  "DOMAIN_ID": "Drug",
+                  "STANDARD_CONCEPT_CAPTION": "Standard",
+                  "CONCEPT_CLASS_ID": "Marketed Product",
+                  "INVALID_REASON": ""
+                },
+                "includeMapped": false,
+                "includeDescendants": false
+              },
+              {
+                "isExcluded": false,
+                "concept": {
+                  "INVALID_REASON_CAPTION": "Unknown",
+                  "CONCEPT_ID": 42971908,
+                  "STANDARD_CONCEPT": "S",
+                  "CONCEPT_CODE": "OMOP4698321",
+                  "VOCABULARY_ID": "RxNorm Extension",
+                  "CONCEPT_NAME": "Vancomycin 500 MG Injection [VANCOMYCIN HCI CJ]",
+                  "DOMAIN_ID": "Drug",
+                  "STANDARD_CONCEPT_CAPTION": "Standard",
+                  "CONCEPT_CLASS_ID": "Branded Drug",
+                  "INVALID_REASON": ""
+                },
+                "includeMapped": false,
+                "includeDescendants": false
+              }
+            ]},
+            "name": "VANCO_ivs",
+            "id": 0
+          },
+          {
+            "expression": {"items": [{
+              "isExcluded": false,
+              "concept": {
+                "INVALID_REASON_CAPTION": "Unknown",
+                "CONCEPT_ID": 2000010023,
+                "STANDARD_CONCEPT": "",
+                "CONCEPT_CODE": "blo_wbc_ti",
+                "VOCABULARY_ID": "vt-code_labs",
+                "CONCEPT_NAME": "WBC in Blood",
+                "DOMAIN_ID": "Measurement",
+                "STANDARD_CONCEPT_CAPTION": "Unknown",
+                "CONCEPT_CLASS_ID": "vt-labs",
+                "INVALID_REASON": ""
+              },
+              "includeMapped": false,
+              "includeDescendants": false
+            }]},
+            "name": "Vanco_WBC",
+            "id": 1
+          },
+          {
+            "expression": {"items": [{
+              "isExcluded": false,
+              "concept": {
+                "INVALID_REASON_CAPTION": "Unknown",
+                "CONCEPT_ID": 2000010004,
+                "STANDARD_CONCEPT": "",
+                "CONCEPT_CODE": "blo_eos_ti",
+                "VOCABULARY_ID": "vt-code_labs",
+                "CONCEPT_NAME": "Eosinophil # in Blood",
+                "DOMAIN_ID": "Measurement",
+                "STANDARD_CONCEPT_CAPTION": "Unknown",
+                "CONCEPT_CLASS_ID": "vt-labs",
+                "INVALID_REASON": ""
+              },
+              "includeMapped": false,
+              "includeDescendants": false
+            }]},
+            "name": "Vanco_Eosinophil",
+            "id": 2
+          },
+          {
+            "expression": {"items": [{
+              "isExcluded": false,
+              "concept": {
+                "INVALID_REASON_CAPTION": "Unknown",
+                "CONCEPT_ID": 2000010018,
+                "STANDARD_CONCEPT": "",
+                "CONCEPT_CODE": "blo_pla_ti",
+                "VOCABULARY_ID": "vt-code_labs",
+                "CONCEPT_NAME": "Platelet in Blood",
+                "DOMAIN_ID": "Measurement",
+                "STANDARD_CONCEPT_CAPTION": "Unknown",
+                "CONCEPT_CLASS_ID": "vt-labs",
+                "INVALID_REASON": ""
+              },
+              "includeMapped": false,
+              "includeDescendants": false
+            }]},
+            "name": "Vanco_PLT",
+            "id": 3
+          },
+          {
+            "expression": {"items": [{
+              "isExcluded": false,
+              "concept": {
+                "INVALID_REASON_CAPTION": "Unknown",
+                "CONCEPT_ID": 2000010039,
+                "STANDARD_CONCEPT": "",
+                "CONCEPT_CODE": "blo_cr_ti",
+                "VOCABULARY_ID": "vt-code_labs",
+                "CONCEPT_NAME": "Creatinine in Blood",
+                "DOMAIN_ID": "Measurement",
+                "STANDARD_CONCEPT_CAPTION": "Unknown",
+                "CONCEPT_CLASS_ID": "vt-labs",
+                "INVALID_REASON": ""
+              },
+              "includeMapped": false,
+              "includeDescendants": false
+            }]},
+            "name": "Vanco_Creatinine",
+            "id": 4
+          },
+          {
+            "expression": {"items": [{
+              "isExcluded": false,
+              "concept": {
+                "INVALID_REASON_CAPTION": "Unknown",
+                "CONCEPT_ID": 2000010043,
+                "STANDARD_CONCEPT": "",
+                "CONCEPT_CODE": "blo_sgpt_ti",
+                "VOCABULARY_ID": "vt-code_labs",
+                "CONCEPT_NAME": "ALT in Blood",
+                "DOMAIN_ID": "Measurement",
+                "STANDARD_CONCEPT_CAPTION": "Unknown",
+                "CONCEPT_CLASS_ID": "vt-labs",
+                "INVALID_REASON": ""
+              },
+              "includeMapped": false,
+              "includeDescendants": false
+            }]},
+            "name": "Vanco_ALT",
+            "id": 5
+          },
+          {
+            "expression": {"items": [
+              {
+                "isExcluded": false,
+                "concept": {
+                  "INVALID_REASON_CAPTION": "Valid",
+                  "CONCEPT_ID": 41270411,
+                  "STANDARD_CONCEPT": "S",
+                  "CONCEPT_CODE": "OMOP2468373",
+                  "VOCABULARY_ID": "RxNorm Extension",
+                  "CONCEPT_NAME": "Vancomycin 500 MG Injectable Solution",
+                  "DOMAIN_ID": "Drug",
+                  "STANDARD_CONCEPT_CAPTION": "Standard",
+                  "CONCEPT_CLASS_ID": "Clinical Drug",
+                  "INVALID_REASON": "V"
+                },
+                "includeMapped": false,
+                "includeDescendants": false
+              },
+              {
+                "isExcluded": false,
+                "concept": {
+                  "INVALID_REASON_CAPTION": "Unknown",
+                  "CONCEPT_ID": 2025858,
+                  "STANDARD_CONCEPT": "S",
+                  "CONCEPT_CODE": "OMOP4924453",
+                  "VOCABULARY_ID": "RxNorm Extension",
+                  "CONCEPT_NAME": "100 ML sodium chloride 9 MG/ML / vancomycin 10 MG/ML Injectable Solution [VANCO KIT] by UK Chemipharm",
+                  "DOMAIN_ID": "Drug",
+                  "STANDARD_CONCEPT_CAPTION": "Standard",
+                  "CONCEPT_CLASS_ID": "Marketed Product",
+                  "INVALID_REASON": ""
+                },
+                "includeMapped": false,
+                "includeDescendants": false
+              },
+              {
+                "isExcluded": false,
+                "concept": {
+                  "INVALID_REASON_CAPTION": "Unknown",
+                  "CONCEPT_ID": 2052958,
+                  "STANDARD_CONCEPT": "S",
+                  "CONCEPT_CODE": "OMOP4953480",
+                  "VOCABULARY_ID": "RxNorm Extension",
+                  "CONCEPT_NAME": "sodium chloride 9 MG/ML / vancomycin 10 MG/ML Injectable Solution [VANCO KIT]",
+                  "DOMAIN_ID": "Drug",
+                  "STANDARD_CONCEPT_CAPTION": "Standard",
+                  "CONCEPT_CLASS_ID": "Branded Drug",
+                  "INVALID_REASON": ""
+                },
+                "includeMapped": false,
+                "includeDescendants": false
+              },
+              {
+                "isExcluded": false,
+                "concept": {
+                  "INVALID_REASON_CAPTION": "Unknown",
+                  "CONCEPT_ID": 2052966,
+                  "STANDARD_CONCEPT": "S",
+                  "CONCEPT_CODE": "OMOP4953488",
+                  "VOCABULARY_ID": "RxNorm Extension",
+                  "CONCEPT_NAME": "vancomycin 1000 MG Injection by CJ",
+                  "DOMAIN_ID": "Drug",
+                  "STANDARD_CONCEPT_CAPTION": "Standard",
+                  "CONCEPT_CLASS_ID": "Marketed Product",
+                  "INVALID_REASON": ""
+                },
+                "includeMapped": false,
+                "includeDescendants": false
+              },
+              {
+                "isExcluded": false,
+                "concept": {
+                  "INVALID_REASON_CAPTION": "Unknown",
+                  "CONCEPT_ID": 42971923,
+                  "STANDARD_CONCEPT": "S",
+                  "CONCEPT_CODE": "OMOP4698336",
+                  "VOCABULARY_ID": "RxNorm Extension",
+                  "CONCEPT_NAME": "Vancomycin 1000 MG Injection [HANOMYCIN]",
+                  "DOMAIN_ID": "Drug",
+                  "STANDARD_CONCEPT_CAPTION": "Standard",
+                  "CONCEPT_CLASS_ID": "Branded Drug",
+                  "INVALID_REASON": ""
+                },
+                "includeMapped": false,
+                "includeDescendants": false
+              },
+              {
+                "isExcluded": false,
+                "concept": {
+                  "INVALID_REASON_CAPTION": "Unknown",
+                  "CONCEPT_ID": 2052964,
+                  "STANDARD_CONCEPT": "S",
+                  "CONCEPT_CODE": "OMOP4953486",
+                  "VOCABULARY_ID": "RxNorm Extension",
+                  "CONCEPT_NAME": "vancomycin 1000 MG Injection [HANOMYCIN] by Samjin",
+                  "DOMAIN_ID": "Drug",
+                  "STANDARD_CONCEPT_CAPTION": "Standard",
+                  "CONCEPT_CLASS_ID": "Marketed Product",
+                  "INVALID_REASON": ""
+                },
+                "includeMapped": false,
+                "includeDescendants": false
+              },
+              {
+                "isExcluded": false,
+                "concept": {
+                  "INVALID_REASON_CAPTION": "Unknown",
+                  "CONCEPT_ID": 2011857,
+                  "STANDARD_CONCEPT": "S",
+                  "CONCEPT_CODE": "OMOP4953496",
+                  "VOCABULARY_ID": "RxNorm Extension",
+                  "CONCEPT_NAME": "vancomycin 1000 MG Injection [VANCOCIN-CP]",
+                  "DOMAIN_ID": "Drug",
+                  "STANDARD_CONCEPT_CAPTION": "Standard",
+                  "CONCEPT_CLASS_ID": "Branded Drug",
+                  "INVALID_REASON": ""
+                },
+                "includeMapped": false,
+                "includeDescendants": false
+              },
+              {
+                "isExcluded": false,
+                "concept": {
+                  "INVALID_REASON_CAPTION": "Unknown",
+                  "CONCEPT_ID": 2011856,
+                  "STANDARD_CONCEPT": "S",
+                  "CONCEPT_CODE": "OMOP4953495",
+                  "VOCABULARY_ID": "RxNorm Extension",
+                  "CONCEPT_NAME": "vancomycin 1000 MG Injection [VANCOCIN-CP] by Menarini",
+                  "DOMAIN_ID": "Drug",
+                  "STANDARD_CONCEPT_CAPTION": "Standard",
+                  "CONCEPT_CLASS_ID": "Marketed Product",
+                  "INVALID_REASON": ""
+                },
+                "includeMapped": false,
+                "includeDescendants": false
+              },
+              {
+                "isExcluded": false,
+                "concept": {
+                  "INVALID_REASON_CAPTION": "Unknown",
+                  "CONCEPT_ID": 42971929,
+                  "STANDARD_CONCEPT": "S",
+                  "CONCEPT_CODE": "OMOP4698342",
+                  "VOCABULARY_ID": "RxNorm Extension",
+                  "CONCEPT_NAME": "Vancomycin 1000 MG Injection [VANCOMYCIN HCI CJ]",
+                  "DOMAIN_ID": "Drug",
+                  "STANDARD_CONCEPT_CAPTION": "Standard",
+                  "CONCEPT_CLASS_ID": "Branded Drug",
+                  "INVALID_REASON": ""
+                },
+                "includeMapped": false,
+                "includeDescendants": false
+              },
+              {
+                "isExcluded": false,
+                "concept": {
+                  "INVALID_REASON_CAPTION": "Unknown",
+                  "CONCEPT_ID": 42971895,
+                  "STANDARD_CONCEPT": "S",
+                  "CONCEPT_CODE": "OMOP4698308",
+                  "VOCABULARY_ID": "RxNorm Extension",
+                  "CONCEPT_NAME": "Vancomycin 250 MG Injection [HANOMYCIN]",
+                  "DOMAIN_ID": "Drug",
+                  "STANDARD_CONCEPT_CAPTION": "Standard",
+                  "CONCEPT_CLASS_ID": "Branded Drug",
+                  "INVALID_REASON": ""
+                },
+                "includeMapped": false,
+                "includeDescendants": false
+              },
+              {
+                "isExcluded": false,
+                "concept": {
+                  "INVALID_REASON_CAPTION": "Unknown",
+                  "CONCEPT_ID": 2052985,
+                  "STANDARD_CONCEPT": "S",
+                  "CONCEPT_CODE": "OMOP4953516",
+                  "VOCABULARY_ID": "RxNorm Extension",
+                  "CONCEPT_NAME": "vancomycin 250 MG Injection [HANOMYCIN] by Samjin",
+                  "DOMAIN_ID": "Drug",
+                  "STANDARD_CONCEPT_CAPTION": "Standard",
+                  "CONCEPT_CLASS_ID": "Marketed Product",
+                  "INVALID_REASON": ""
+                },
+                "includeMapped": false,
+                "includeDescendants": false
+              },
+              {
+                "isExcluded": false,
+                "concept": {
+                  "INVALID_REASON_CAPTION": "Unknown",
+                  "CONCEPT_ID": 2052976,
+                  "STANDARD_CONCEPT": "S",
+                  "CONCEPT_CODE": "OMOP4953503",
+                  "VOCABULARY_ID": "RxNorm Extension",
+                  "CONCEPT_NAME": "vancomycin 500 MG Injection by CJ",
+                  "DOMAIN_ID": "Drug",
+                  "STANDARD_CONCEPT_CAPTION": "Standard",
+                  "CONCEPT_CLASS_ID": "Marketed Product",
+                  "INVALID_REASON": ""
+                },
+                "includeMapped": false,
+                "includeDescendants": false
+              },
+              {
+                "isExcluded": false,
+                "concept": {
+                  "INVALID_REASON_CAPTION": "Unknown",
+                  "CONCEPT_ID": 2011861,
+                  "STANDARD_CONCEPT": "S",
+                  "CONCEPT_CODE": "OMOP4953514",
+                  "VOCABULARY_ID": "RxNorm Extension",
+                  "CONCEPT_NAME": "vancomycin 500 MG Injection [VANCOCIN-CP]",
+                  "DOMAIN_ID": "Drug",
+                  "STANDARD_CONCEPT_CAPTION": "Standard",
+                  "CONCEPT_CLASS_ID": "Branded Drug",
+                  "INVALID_REASON": ""
+                },
+                "includeMapped": false,
+                "includeDescendants": false
+              },
+              {
+                "isExcluded": false,
+                "concept": {
+                  "INVALID_REASON_CAPTION": "Unknown",
+                  "CONCEPT_ID": 2011860,
+                  "STANDARD_CONCEPT": "S",
+                  "CONCEPT_CODE": "OMOP4953513",
+                  "VOCABULARY_ID": "RxNorm Extension",
+                  "CONCEPT_NAME": "vancomycin 500 MG Injection [VANCOCIN-CP] by Menarini",
+                  "DOMAIN_ID": "Drug",
+                  "STANDARD_CONCEPT_CAPTION": "Standard",
+                  "CONCEPT_CLASS_ID": "Marketed Product",
+                  "INVALID_REASON": ""
+                },
+                "includeMapped": false,
+                "includeDescendants": false
+              },
+              {
+                "isExcluded": false,
+                "concept": {
+                  "INVALID_REASON_CAPTION": "Unknown",
+                  "CONCEPT_ID": 42971908,
+                  "STANDARD_CONCEPT": "S",
+                  "CONCEPT_CODE": "OMOP4698321",
+                  "VOCABULARY_ID": "RxNorm Extension",
+                  "CONCEPT_NAME": "Vancomycin 500 MG Injection [VANCOMYCIN HCI CJ]",
+                  "DOMAIN_ID": "Drug",
+                  "STANDARD_CONCEPT_CAPTION": "Standard",
+                  "CONCEPT_CLASS_ID": "Branded Drug",
+                  "INVALID_REASON": ""
+                },
+                "includeMapped": false,
+                "includeDescendants": false
+              },
+              {
+                "isExcluded": false,
+                "concept": {
+                  "INVALID_REASON_CAPTION": "Valid",
+                  "CONCEPT_ID": 44083823,
+                  "STANDARD_CONCEPT": "S",
+                  "CONCEPT_CODE": "OMOP1078454",
+                  "VOCABULARY_ID": "RxNorm Extension",
+                  "CONCEPT_NAME": "Vancomycin 1000 MG Injectable Solution",
+                  "DOMAIN_ID": "Drug",
+                  "STANDARD_CONCEPT_CAPTION": "Standard",
+                  "CONCEPT_CLASS_ID": "Clinical Drug",
+                  "INVALID_REASON": "V"
+                },
+                "includeMapped": false,
+                "includeDescendants": false
+              },
+              {
+                "isExcluded": false,
+                "concept": {
+                  "INVALID_REASON_CAPTION": "Valid",
+                  "CONCEPT_ID": 41270411,
+                  "STANDARD_CONCEPT": "S",
+                  "CONCEPT_CODE": "OMOP2468373",
+                  "VOCABULARY_ID": "RxNorm Extension",
+                  "CONCEPT_NAME": "Vancomycin 500 MG Injectable Solution",
+                  "DOMAIN_ID": "Drug",
+                  "STANDARD_CONCEPT_CAPTION": "Standard",
+                  "CONCEPT_CLASS_ID": "Clinical Drug",
+                  "INVALID_REASON": "V"
+                },
+                "includeMapped": false,
+                "includeDescendants": false
+              }
+            ]},
+            "name": "Vanco_0320",
+            "id": 6
+          }
+        ],
+        "EndStrategy": {"CustomEra": {
+          "DrugCodesetId": 6,
+          "DaysSupplyOverride": null,
+          "GapDays": 7,
+          "Offset": 7
+        }},
+        "cdmVersionRange": ">=5.0.0",
+        "CensoringCriteria": [],
+        "AdditionalCriteria": {
+          "CriteriaList": [
+            {
+              "RestrictVisit": false,
+              "StartWindow": {
+                "UseEventEnd": false,
+                "Start": {
+                  "Days": 7,
+                  "Coeff": -1
+                },
+                "End": {
+                  "Days": 0,
+                  "Coeff": -1
+                },
+                "UseIndexEnd": false
+              },
+              "IgnoreObservationPeriod": false,
+              "EndWindow": null,
+              "Criteria": {"Measurement": {
+                "Operator": null,
+                "RangeHigh": null,
+                "MeasurementTypeExclude": false,
+                "ValueAsConcept": null,
+                "CorrelatedCriteria": null,
+                "RangeHighRatio": null,
+                "CodesetId": 1,
+                "ProviderSpecialty": null,
+                "Gender": null,
+                "Unit": null,
+                "RangeLowRatio": null,
+                "MeasurementType": null,
+                "MeasurementSourceConcept": null,
+                "VisitType": null,
+                "ValueAsNumber": {
+                  "Op": "lt",
+                  "Extent": null,
+                  "Value": 3.8
+                },
+                "First": null,
+                "OccurrenceStartDate": null,
+                "RangeLow": null,
+                "Abnormal": null,
+                "Age": null
+              }},
+              "Occurrence": {
+                "Type": 0,
+                "CountColumn": null,
+                "IsDistinct": false,
+                "Count": 0
+              }
+            },
+            {
+              "RestrictVisit": false,
+              "StartWindow": {
+                "UseEventEnd": false,
+                "Start": {
+                  "Days": 7,
+                  "Coeff": -1
+                },
+                "End": {
+                  "Days": 0,
+                  "Coeff": -1
+                },
+                "UseIndexEnd": false
+              },
+              "IgnoreObservationPeriod": false,
+              "EndWindow": null,
+              "Criteria": {"Measurement": {
+                "Operator": null,
+                "RangeHigh": null,
+                "MeasurementTypeExclude": false,
+                "ValueAsConcept": null,
+                "CorrelatedCriteria": null,
+                "RangeHighRatio": null,
+                "CodesetId": 2,
+                "ProviderSpecialty": null,
+                "Gender": null,
+                "Unit": null,
+                "RangeLowRatio": null,
+                "MeasurementType": null,
+                "MeasurementSourceConcept": null,
+                "VisitType": null,
+                "ValueAsNumber": {
+                  "Op": "gt",
+                  "Extent": null,
+                  "Value": 6
+                },
+                "First": null,
+                "OccurrenceStartDate": null,
+                "RangeLow": null,
+                "Abnormal": null,
+                "Age": null
+              }},
+              "Occurrence": {
+                "Type": 0,
+                "CountColumn": null,
+                "IsDistinct": false,
+                "Count": 0
+              }
+            },
+            {
+              "RestrictVisit": false,
+              "StartWindow": {
+                "UseEventEnd": false,
+                "Start": {
+                  "Days": 7,
+                  "Coeff": -1
+                },
+                "End": {
+                  "Days": 0,
+                  "Coeff": -1
+                },
+                "UseIndexEnd": false
+              },
+              "IgnoreObservationPeriod": false,
+              "EndWindow": null,
+              "Criteria": {"Measurement": {
+                "Operator": null,
+                "RangeHigh": null,
+                "MeasurementTypeExclude": false,
+                "ValueAsConcept": null,
+                "CorrelatedCriteria": null,
+                "RangeHighRatio": null,
+                "CodesetId": 3,
+                "ProviderSpecialty": null,
+                "Gender": null,
+                "Unit": null,
+                "RangeLowRatio": null,
+                "MeasurementType": null,
+                "MeasurementSourceConcept": null,
+                "VisitType": null,
+                "ValueAsNumber": {
+                  "Op": "lt",
+                  "Extent": null,
+                  "Value": 140
+                },
+                "First": null,
+                "OccurrenceStartDate": null,
+                "RangeLow": null,
+                "Abnormal": null,
+                "Age": null
+              }},
+              "Occurrence": {
+                "Type": 0,
+                "CountColumn": null,
+                "IsDistinct": false,
+                "Count": 0
+              }
+            },
+            {
+              "RestrictVisit": false,
+              "StartWindow": {
+                "UseEventEnd": false,
+                "Start": {
+                  "Days": 7,
+                  "Coeff": -1
+                },
+                "End": {
+                  "Days": 0,
+                  "Coeff": -1
+                },
+                "UseIndexEnd": false
+              },
+              "IgnoreObservationPeriod": false,
+              "EndWindow": null,
+              "Criteria": {"Measurement": {
+                "Operator": null,
+                "RangeHigh": null,
+                "MeasurementTypeExclude": false,
+                "ValueAsConcept": null,
+                "CorrelatedCriteria": null,
+                "RangeHighRatio": null,
+                "CodesetId": 5,
+                "ProviderSpecialty": null,
+                "Gender": null,
+                "Unit": null,
+                "RangeLowRatio": null,
+                "MeasurementType": null,
+                "MeasurementSourceConcept": null,
+                "VisitType": null,
+                "ValueAsNumber": {
+                  "Op": "gt",
+                  "Extent": null,
+                  "Value": 40
+                },
+                "First": null,
+                "OccurrenceStartDate": null,
+                "RangeLow": null,
+                "Abnormal": null,
+                "Age": null
+              }},
+              "Occurrence": {
+                "Type": 0,
+                "CountColumn": null,
+                "IsDistinct": false,
+                "Count": 0
+              }
+            },
+            {
+              "RestrictVisit": false,
+              "StartWindow": {
+                "UseEventEnd": false,
+                "Start": {
+                  "Days": 7,
+                  "Coeff": -1
+                },
+                "End": {
+                  "Days": 0,
+                  "Coeff": -1
+                },
+                "UseIndexEnd": false
+              },
+              "IgnoreObservationPeriod": false,
+              "EndWindow": null,
+              "Criteria": {"Measurement": {
+                "Operator": null,
+                "RangeHigh": null,
+                "MeasurementTypeExclude": false,
+                "ValueAsConcept": null,
+                "CorrelatedCriteria": null,
+                "RangeHighRatio": null,
+                "CodesetId": 4,
+                "ProviderSpecialty": null,
+                "Gender": null,
+                "Unit": null,
+                "RangeLowRatio": null,
+                "MeasurementType": null,
+                "MeasurementSourceConcept": null,
+                "VisitType": null,
+                "ValueAsNumber": {
+                  "Op": "gt",
+                  "Extent": null,
+                  "Value": 1.2
+                },
+                "First": null,
+                "OccurrenceStartDate": null,
+                "RangeLow": null,
+                "Abnormal": null,
+                "Age": null
+              }},
+              "Occurrence": {
+                "Type": 0,
+                "CountColumn": null,
+                "IsDistinct": false,
+                "Count": 0
+              }
+            }
+          ],
+          "Type": "ALL",
+          "DemographicCriteriaList": [],
+          "Groups": [],
+          "Count": null
+        },
+        "QualifiedLimit": {"Type": "First"},
+        "InclusionRules": [],
+        "PrimaryCriteria": {
+          "CriteriaList": [{"DrugExposure": {
+            "OccurrenceEndDate": null,
+            "CorrelatedCriteria": null,
+            "DrugSourceConcept": null,
+            "CodesetId": 6,
+            "DrugTypeExclude": false,
+            "Quantity": null,
+            "DrugType": null,
+            "ProviderSpecialty": null,
+            "EffectiveDrugDose": null,
+            "Gender": null,
+            "DaysSupply": null,
+            "DoseUnit": null,
+            "VisitType": null,
+            "Refills": null,
+            "First": null,
+            "OccurrenceStartDate": null,
+            "RouteConcept": null,
+            "StopReason": null,
+            "LotNumber": null,
+            "Age": null
+          }}],
+          "PrimaryCriteriaLimit": {"Type": "First"},
+          "ObservationWindow": {
+            "PostDays": 0,
+            "PriorDays": 0
+          }
+        }
+      },
+      "createdDate": null,
+      "createdBy": null,
+      "name": "Vanco_normal_cohort",
+      "modifiedDate": null,
+      "description": null,
+      "expressionType": "SIMPLE_EXPRESSION",
+      "modifiedBy": null,
+      "id": 125
+    }
+  ],
+  "modelSettings": [{"LassoLogisticRegressionSettings": {
+    "seed": null,
+    "variance": 0.01
+  }}],
+  "name": "effect of vancomycin_230610",
+  "covariateSettings": [{
+    "VisitCountMediumTerm": false,
+    "ObservationShortTerm": false,
+    "shortTermStartDays": -30,
+    "MeasurementRangeGroupShortTerm": false,
+    "ConditionOccurrenceLongTerm": false,
+    "DrugEraStartLongTerm": false,
+    "VisitCountShortTerm": false,
+    "Chads2Vasc": true,
+    "ConditionGroupEraStartLongTerm": false,
+    "ConditionEraShortTerm": false,
+    "Dcsi": true,
+    "DrugGroupEraLongTerm": false,
+    "DrugGroupEraShortTerm": true,
+    "ConditionEraStartLongTerm": false,
+    "temporal": false,
+    "DemographicsIndexMonth": false,
+    "ConditionOccurrencePrimaryInpatientLongTerm": false,
+    "ConditionEraAnyTimePrior": false,
+    "addDescendantsToInclude": false,
+    "ConditionGroupEraStartMediumTerm": false,
+    "ProcedureOccurrenceLongTerm": false,
+    "DrugExposureLongTerm": false,
+    "DrugEraStartShortTerm": false,
+    "DistinctIngredientCountMediumTerm": false,
+    "DistinctMeasurementCountShortTerm": false,
+    "MeasurementRangeGroupLongTerm": false,
+    "ConditionGroupEraOverlapping": false,
+    "attr_fun": "getDbDefaultCovariateData",
+    "MeasurementRangeGroupMediumTerm": false,
+    "DrugGroupEraStartMediumTerm": false,
+    "MeasurementAnyTimePrior": false,
+    "MeasurementMediumTerm": false,
+    "includedCovariateIds": [],
+    "ConditionOccurrenceAnyTimePrior": false,
+    "DistinctConditionCountLongTerm": false,
+    "MeasurementValueLongTerm": false,
+    "DrugEraShortTerm": false,
+    "DrugGroupEraAnyTimePrior": false,
+    "DrugEraOverlapping": false,
+    "ConditionOccurrencePrimaryInpatientAnyTimePrior": false,
+    "ConditionEraMediumTerm": false,
+    "ConditionEraOverlapping": false,
+    "ConditionEraStartShortTerm": false,
+    "ObservationAnyTimePrior": false,
+    "VisitConceptCountShortTerm": false,
+    "DemographicsEthnicity": false,
+    "DistinctIngredientCountLongTerm": false,
+    "ConditionOccurrencePrimaryInpatientShortTerm": false,
+    "DemographicsAgeGroup": true,
+    "DistinctProcedureCountShortTerm": false,
+    "DistinctObservationCountMediumTerm": false,
+    "includedCovariateConceptIds": [],
+    "DrugGroupEraStartShortTerm": false,
+    "addDescendantsToExclude": false,
+    "DrugEraLongTerm": false,
+    "DistinctConditionCountShortTerm": false,
+    "ConditionGroupEraShortTerm": true,
+    "ConditionEraStartMediumTerm": false,
+    "VisitCountLongTerm": false,
+    "DemographicsRace": false,
+    "ProcedureOccurrenceAnyTimePrior": false,
+    "DistinctObservationCountLongTerm": false,
+    "attr_class": "covariateSettings",
+    "ProcedureOccurrenceMediumTerm": false,
+    "CharlsonIndex": true,
+    "DemographicsPriorObservationTime": false,
+    "MeasurementShortTerm": false,
+    "DistinctProcedureCountMediumTerm": false,
+    "ConditionEraLongTerm": false,
+    "DrugGroupEraStartLongTerm": false,
+    "DemographicsGender": true,
+    "DeviceExposureAnyTimePrior": false,
+    "ObservationLongTerm": false,
+    "DemographicsIndexYearMonth": false,
+    "ConditionOccurrenceMediumTerm": false,
+    "longTermStartDays": -365,
+    "DemographicsAge": false,
+    "DrugGroupEraOverlapping": true,
+    "DistinctMeasurementCountLongTerm": false,
+    "MeasurementRangeGroupAnyTimePrior": false,
+    "DistinctConditionCountMediumTerm": false,
+    "DrugGroupEraMediumTerm": false,
+    "ProcedureOccurrenceShortTerm": false,
+    "ObservationMediumTerm": false,
+    "ConditionGroupEraAnyTimePrior": false,
+    "Chads2": true,
+    "DrugExposureAnyTimePrior": false,
+    "DeviceExposureLongTerm": false,
+    "DemographicsTimeInCohort": false,
+    "DistinctMeasurementCountMediumTerm": false,
+    "MeasurementValueShortTerm": false,
+    "DeviceExposureMediumTerm": false,
+    "ConditionGroupEraStartShortTerm": false,
+    "ConditionOccurrencePrimaryInpatientMediumTerm": false,
+    "MeasurementLongTerm": false,
+    "DemographicsIndexYear": false,
+    "MeasurementValueMediumTerm": false,
+    "DrugEraStartMediumTerm": false,
+    "MeasurementValueAnyTimePrior": false,
+    "DistinctObservationCountShortTerm": false,
+    "DrugEraMediumTerm": false,
+    "ConditionGroupEraLongTerm": false,
+    "DrugExposureShortTerm": false,
+    "DistinctIngredientCountShortTerm": false,
+    "DeviceExposureShortTerm": false,
+    "mediumTermStartDays": -180,
+    "DemographicsPostObservationTime": false,
+    "VisitConceptCountLongTerm": false,
+    "VisitConceptCountMediumTerm": false,
+    "excludedCovariateConceptIds": [],
+    "ConditionGroupEraMediumTerm": false,
+    "DrugExposureMediumTerm": false,
+    "DistinctProcedureCountLongTerm": false,
+    "DrugEraAnyTimePrior": false,
+    "endDays": 0,
+    "ConditionOccurrenceShortTerm": true
+  }],
+  "conceptSets": [],
+  "id": 15,
+  "packageName": "prediction15"
+}
