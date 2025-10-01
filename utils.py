@@ -70,7 +70,15 @@ def find_rproj_name(extracted_dir):
             return os.path.splitext(f)[0]  # 확장자 제거
     return None
 
-def generate_r_script_content(rproj_name, extracted_dir):
+
+def get_current_folder_name(path):
+    """
+    주어진 경로(path)에서 현재 폴더 이름 반환
+    """
+    return os.path.basename(os.path.abspath(path))
+
+
+def generate_pred_script_content(rproj_name, extracted_dir, folder_name):
     """
     prediction_script.R 내용 생성
     """
@@ -78,7 +86,8 @@ def generate_r_script_content(rproj_name, extracted_dir):
     extracted_dir_r = extracted_dir.replace("\\", "/")  
 
     content = f'''# Generated prediction_script.R
-system("Rcmd.exe INSTALL --preclean --no-multiarch --with-keep.source {rproj_name}")
+pkg_path <- "C:/Users/ljh86/Desktop/rServer/uploads/{folder_name}"
+system(paste("Rcmd.exe INSTALL --preclean --no-multiarch --with-keep.source", shQuote(pkg_path)))
 
 library({rproj_name})
 
@@ -142,7 +151,7 @@ analysesToValidate = NULL
 packageResults <- FALSE
 minCellCount = 5
 createShiny <- TRUE
-sampleSize <- 1000
+sampleSize <- 5000
 
 execute(
     databaseDetails = databaseDetails,
@@ -170,11 +179,13 @@ def create_prediction_script(extracted_dir):
     os.makedirs(extracted_dir, exist_ok=True)
     
     rproj_name = find_rproj_name(extracted_dir)
+    folder_name = get_current_folder_name(extracted_dir)
+
     if not rproj_name:
         raise FileNotFoundError(f"{extracted_dir} 경로에 .Rproj 파일이 없음")
     
     r_script_path = os.path.join(extracted_dir, "prediction_script.R")
-    content = generate_r_script_content(rproj_name, extracted_dir)
+    content = generate_pred_script_content(rproj_name, extracted_dir, folder_name)
     
     with open(r_script_path, "w", encoding="utf-8") as f:
         f.write(content)
