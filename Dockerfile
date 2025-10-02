@@ -2,9 +2,9 @@
 FROM python:3.11-slim
 
 # R 설치
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends r-base && \
-    apt-get clean && rm -rf /var/lib/apt/lists/*
+#RUN apt-get update && \
+#    apt-get install -y --no-install-recommends r-base && \
+#    apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # 작업 디렉토리 생성
 WORKDIR /app
